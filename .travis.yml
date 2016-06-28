@@ -1,0 +1,37 @@
+# Config file for automatic testing at travis-ci.org
+
+language: python
+
+python:
+  - "2.7"
+
+addons:
+  apt:
+    packages:
+     - python-all
+     - python-setuptools
+     - python-dev
+     - debhelper
+     - libqt4-dev
+     - libqt4-opengl-dev
+     - libcgal-dev
+     - libboost-python-dev
+     - bison
+     - flex
+     - libqhull-dev
+     - libreadline-dev
+     - pkg-config
+     - freeglut3-dev
+     - libann-dev
+     - liblapack-dev
+     - libblas-dev
+     - libmpfr-dev
+     - libeigen2-dev
+
+
+install:
+ - pip install --upgrade git+https://github.com/openalea/deploy#egg=OpenAlea.Deploy
+ - pip install --upgrade git+https://github.com/openalea/sconsx#egg=OpenAlea.SConsX
+
+script:
+ - scons
