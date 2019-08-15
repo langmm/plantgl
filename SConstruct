@@ -42,7 +42,7 @@ if not qt_version:
 try:
     # Test the whether SconsX provides FLEX and BISON flags
     env['WITH_FLEX'] and env['WITH_BISON']
-except KeyError, ke:
+except KeyError as ke:
     env['WITH_FLEX']  = not env['LEX'] is None and os.path.exists(env['LEX'])
     if env['WITH_FLEX']: env.Append(CPPDEFINES =["WITH_FLEX"])
 
