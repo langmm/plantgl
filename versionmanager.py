@@ -8,7 +8,9 @@ def getPGLVersion():
 
 def getMetaInfo():
     metainfo = {}
-    execfile(os.path.join('src','plantgl','__init__.py'),metainfo,metainfo)
+    filename = os.path.join('src','plantgl','__init__.py')
+    exec(compile(open(filename, "rb").read(), filename, 'exec'),
+         metainfo,metainfo)
     return metainfo['__metainfo__']
 
 def get_config_vars(env):
