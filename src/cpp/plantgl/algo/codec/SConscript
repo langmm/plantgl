@@ -41,7 +41,7 @@ if BUILD_BISON:
 
 inc= env.ALEAIncludes( "plantgl/algo/codec", includes )
 
-sources= map(lambda x: pj('codec',x),sources)
+sources= list(map(lambda x: pj('codec',x),sources))
 
 if BUILD_BISON:
     sources.append(bison_obj)

@@ -27,7 +27,7 @@ ui_sources= []
 for d in ['base','viewer']:
     sources+= lib_env.ALEAGlob('*.cpp', dir= d)
     if d == 'base' and platform.name != 'win32':
-        sources= filter( lambda x: 'trayicon' not in x, sources )
+        sources= list(filter( lambda x: 'trayicon' not in x, sources ))
 
     ui_sources+= lib_env.ALEAGlob('*.ui',dir=d+'/interface')
 
@@ -38,7 +38,7 @@ else:
 
 lib_env.ALEAIncludes( "plantgl/gui", ui_headers )
 
-#print map(str,ui)
+#print list(map(str,ui))
 
 # Add defines to export symbols on Windows
 DEFINES= list(lib_env['CPPDEFINES'])
