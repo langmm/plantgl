@@ -34,9 +34,9 @@
 #include "util_types.h"
 
 #ifndef PGL_CORE_WITHOUT_QT
-#include <QtCore/qfile.h>
-#include <QtCore/qdir.h>
-#include <QtCore/qfileinfo.h>
+#include <QFile>
+#include <QDir>
+#include <QFileInfo>
 #else
 #ifdef __GNUC__
 #include <unistd.h>
