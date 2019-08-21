@@ -1,22 +1,18 @@
 # do not edit the following line. It will be updated automatically
+{% set name = "plantgl" %}
 {% set version = "2.23.2" %}
 
 package:
-  name: openalea.plantgl
+  name: openalea.{{ name|lower }}
   version: {{ version }}
 
 source:
   path: ..
 
-
-about:
-  home: https://github.com/openalea/plantgl
-  license: Cecill-C
-  summary: An open-source graphic toolkit for the creation, simulation and analysis of 3D virtual plants.
-
 build:
   preserve_egg_dir: True
-  number: 1
+  number: 0
+  # script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
   build:
@@ -25,26 +21,26 @@ requirements:
    - openalea.deploy
    - scons
    - openalea.sconsx
-   - qt <5
+   - qt 5.9.*
    - boost
-   - bison [unix]
-   - flex 2.5.39 [unix]
-   - m2-bison [win]
-   - m2-flex  [win]
-   - cgal [unix]
-   - gmp [unix]
+   - bison  # [unix]
+   - flex  # [unix]
+   - m2-bison  # [win]
+   - m2-flex  # [win]
+   - cgal  # [unix]
+   - gmp  # [unix]
    - eigen
    - ann
    - qhull
-   - patchelf [linux]
+   - patchelf  # [linux]
   run:
    - python
    - openalea.deploy
    - openalea.core
-   - qt <5 #{{ pin_compatible('qt', exact=True) }}
+   - qt 5.9.*
    - pyqt
-   - gmp [unix]
-   - cgal [unix]
+   - gmp  # [unix]
+   - cgal  # [unix]
    - qhull
    - ann
    - boost #{{ pin_compatible('boost', exact=True) }}
@@ -61,3 +57,13 @@ test:
     - share/
   commands:
    - nosetests -v -I test_viewer.py -I test_projpershape.py -I thread.py -I test_geomprinter.py -I test_coneofperception.py -I test_pointgrid.py # -I test_bbox.py -I test_codec.py
+
+about:
+  home: https://github.com/openalea/plantgl
+  license: CECILL-C
+  license_file: LICENSE.txt
+  summary: An open-source graphic toolkit for the creation, simulation and analysis of 3D virtual plants.
+
+extra:
+  recipe-maintainers:
+    - langmm
